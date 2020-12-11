@@ -6,13 +6,15 @@ public class Course {
     private int member;
     private Class aClass;
     private Location location;
+    private Skiteacher skiteacher;
 
     public Course() {
     }
 
-    public Course(String name, int aclass, Location location) {
+    public Course(String name, int aclass, Location location, Skiteacher skiteacher) {
         this.name = name;
         this.location = location;
+        this.skiteacher = skiteacher;
 
         switch (aclass) {
             case 1:
@@ -54,10 +56,20 @@ public class Course {
         this.aClass = aClass;
     }
 
-    public void update(){
+    public Location getLocation() {
+        return location;
+    }
 
-        this.setMember(this.getMember() + 1);
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
+    public Skiteacher getSkiteacher() {
+        return skiteacher;
+    }
+
+    public void setSkiteacher(Skiteacher skiteacher) {
+        this.skiteacher = skiteacher;
     }
 
     @Override

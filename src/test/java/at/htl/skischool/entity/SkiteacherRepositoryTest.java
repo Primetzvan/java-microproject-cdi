@@ -22,12 +22,9 @@ public class SkiteacherRepositoryTest {
     @Test
     void addSkiTeacher(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
         repo.skiteacherList.clear();
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skiteacher teacher = new Skiteacher("Hans", "Müller", 55, course,  1430);
+        Skiteacher teacher = new Skiteacher("Hans", "Müller", 55,  1430);
 
         repo.save(teacher);
 
@@ -39,17 +36,15 @@ public class SkiteacherRepositoryTest {
     void updateSkiTeacher(){
 
         Integer id;
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
 
         repo.skiteacherList.clear();
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skiteacher teacher = new Skiteacher("Hans", "Müller", 55, course,  1430);
+        Skiteacher teacher = new Skiteacher("Hans", "Müller", 55,  1430);
 
         repo.save(teacher);
 
         id = teacher.getId();
-        Skiteacher teachernew = new Skiteacher(id, "Hans", "Müller", 60, course,  1430);
+        Skiteacher teachernew = new Skiteacher(id, "Hans", "Müller", 60,  1430);
 
         repo.save(teachernew);
 
@@ -60,12 +55,9 @@ public class SkiteacherRepositoryTest {
     @Test
     void deleteSkiTeacher(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
         repo.skiteacherList.clear();
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skiteacher teacher = new Skiteacher("Hans", "Müller", 55, course,  1430);
+        Skiteacher teacher = new Skiteacher("Hans", "Müller", 55,  1430);
 
         repo.save(teacher);
 
@@ -81,16 +73,13 @@ public class SkiteacherRepositoryTest {
     @Test
     void findAll(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
         repo.skiteacherList.clear();
 
         List<Skiteacher> list;
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skiteacher skiteacher = new Skiteacher("Hans", "Müller", 55, course,  1430);
-        Skiteacher skiteacher1 = new Skiteacher("Peter", "Hofer", 50, course,  1000);
-        Skiteacher skiteacher2 = new Skiteacher("Lisa", "Müller", 25, course,  1000);
+        Skiteacher skiteacher = new Skiteacher("Hans", "Müller", 55,  1430);
+        Skiteacher skiteacher1 = new Skiteacher("Peter", "Hofer", 50,  1000);
+        Skiteacher skiteacher2 = new Skiteacher("Lisa", "Müller", 25,  1000);
 
         repo.save(skiteacher);
         repo.save(skiteacher1);
@@ -106,17 +95,14 @@ public class SkiteacherRepositoryTest {
     @Test
     void findById(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
         repo.skiteacherList.clear();
 
         Integer id;
         Skiteacher teacher;
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skiteacher skiteacher = new Skiteacher("Hans", "Müller", 55, course,  1430);
-        Skiteacher skiteacher1 = new Skiteacher("Peter", "Hofer", 50, course,  1000);
-        Skiteacher skiteacher2 = new Skiteacher("Lisa", "Müller", 25, course,  1000);
+        Skiteacher skiteacher = new Skiteacher("Hans", "Müller", 55,  1430);
+        Skiteacher skiteacher1 = new Skiteacher("Peter", "Hofer", 50,  1000);
+        Skiteacher skiteacher2 = new Skiteacher("Lisa", "Müller", 25,  1000);
 
         repo.save(skiteacher);
         repo.save(skiteacher1);

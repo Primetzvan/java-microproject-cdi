@@ -15,12 +15,10 @@ public class SkistudentRepository implements Repository<Skistudent> {
 
     public SkistudentRepository() {
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-        Course course = new Course("Anfänger05-01-2021", 3,location);
 
-        save(new Skistudent("Jonas", "Müller", 10, course));
-        save(new Skistudent("Sarah", "Hofer", 11, course));
-        save(new Skistudent("Sebastian", "Mayer", 15, course));
+        save(new Skistudent("Jonas", "Müller", 10));
+        save(new Skistudent("Sarah", "Hofer", 11));
+        save(new Skistudent("Sebastian", "Mayer", 15));
     }
 
     public void save(Skistudent entity){
@@ -31,10 +29,6 @@ public class SkistudentRepository implements Repository<Skistudent> {
             entity.setId(skistudentList.size());
             skistudentList.add(entity);
 
-            Course course = entity.getCourse();
-
-            course.update();
-
         }else {
             //UPDATE
             Skistudent skistudent = findById(entity.getId());
@@ -42,7 +36,6 @@ public class SkistudentRepository implements Repository<Skistudent> {
             skistudent.setFirstname(entity.getFirstname());
             skistudent.setLastname(entity.getLastname());
             skistudent.setAge(entity.getAge());
-            skistudent.setCourse(entity.getCourse());
 
         }
 

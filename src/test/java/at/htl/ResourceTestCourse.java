@@ -1,6 +1,7 @@
 package at.htl;
 
 import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -26,13 +27,23 @@ public class ResourceTestCourse {
     }
 
 
-//    @Test
-//    public void testnewcourse() {
-//        given()
-//          .when().post("/courseService/newCourse")
-//          .then()
-//             .statusCode(200);
-//    }
+    @Test
+    public void testnewcourse() {
+        given()
+         .accept(ContentType.JSON)
+         .contentType(ContentType.JSON)
+         .body(
+         """
+           {
+             "name": "Anfänger14-12-2020",
+             "aclass": 3,
+             "location": 0
+           }
+         """)
+         .when().post("/courseService/newCourse")
+         .then()
+             .statusCode(200);
+    }
 
 //    @Test
 //    public void testHelloEndpoint() {

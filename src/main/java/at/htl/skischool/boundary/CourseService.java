@@ -2,6 +2,7 @@ package at.htl.skischool.boundary;
 
 import at.htl.skischool.entity.Course;
 import at.htl.skischool.entity.Location;
+import at.htl.skischool.entity.Skiteacher;
 import at.htl.skischool.repository.CourseRepository;
 import at.htl.skischool.repository.LocationRepository;
 import at.htl.skischool.repository.SkiteacherRepository;
@@ -21,6 +22,8 @@ public class CourseService {
     public LocationRepository repoLocation;
     @Inject
     public CourseRepository repoCourse;
+    @Inject
+    public SkiteacherRepository repoTeacher;
 
     @GET
     @Path("/course")
@@ -40,17 +43,20 @@ public class CourseService {
     public String newCourse(JsonValue value) {
 
         Location location = null;
+        Skiteacher skiteacher = null;
 
         List<Course> courseList = new ArrayList<>();
 
         if (value.getValueType().equals(JsonValue.ValueType.OBJECT)) {
 
             location = repoLocation.findById(value.asJsonObject().getInt("location"));
+            skiteacher = repoTeacher.findById(value.asJsonObject().getInt("teacher"));
 
             Course course = new Course(
                     value.asJsonObject().getString("name"),
                     value.asJsonObject().getInt("aclass"),
-                    location
+                    location,
+                    skiteacher
             );
 
             repoCourse.save(course);
@@ -59,16 +65,18 @@ public class CourseService {
         } else {
             for (int i = 0; i < value.asJsonArray().size(); i++) {
 
-                if (repoLocation.findById(value.asJsonArray().get(i).asJsonObject().getInt("location")) != null){
+                if (repoLocation.findById(value.asJsonArray().get(i).asJsonObject().getInt("location")) != null) {
                     location = repoLocation.findById(value.asJsonArray().get(i).asJsonObject().getInt("location"));
-                }else {
+                    skiteacher = repoTeacher.findById(value.asJsonObject().getInt("teacher"));
+                } else {
                     return "Location nicht vorhanden!";
                 }
 
                 Course course = new Course(
                         value.asJsonArray().get(i).asJsonObject().getString("name"),
                         value.asJsonArray().get(i).asJsonObject().getInt("aclass"),
-                        location
+                        location,
+                        skiteacher
                 );
 
                 courseList.add(course);
@@ -97,7 +105,7 @@ public class CourseService {
 
             return repoCourse.delete(name);
 
-        }else {
+        } else {
             for (int i = 0; i < value.asJsonArray().size(); i++) {
 
                 name = value.asJsonArray().get(i).asJsonObject().getString("name");
@@ -125,8 +133,7 @@ public class CourseService {
 
             return repoCourse.findById(name).toString();
 
-        }
-        else if (value.getValueType().equals(JsonValue.ValueType.ARRAY)) {
+        } else if (value.getValueType().equals(JsonValue.ValueType.ARRAY)) {
             for (int i = 0; i < value.asJsonArray().size(); i++) {
 
                 name = value.asJsonArray().get(i).asJsonObject().getString("name");
@@ -136,11 +143,9 @@ public class CourseService {
 
             return courseList.toString();
 
-        } else{
+        } else {
             return "Kein Kurs mit diesem Namen gefunden!";
         }
 
     }
-
-
 }

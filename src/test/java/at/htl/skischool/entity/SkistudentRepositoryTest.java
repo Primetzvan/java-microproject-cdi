@@ -22,12 +22,9 @@ public class SkistudentRepositoryTest {
     @Test
     void addSkiStudent(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
         repo.skistudentList.clear();
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skistudent student = new Skistudent("Hans", "Müller", 10, course);
+        Skistudent student = new Skistudent("Hans", "Müller", 10);
 
         repo.save(student);
 
@@ -39,17 +36,15 @@ public class SkistudentRepositoryTest {
     void updateSkiStudent(){
 
         Integer id;
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
 
         repo.skistudentList.clear();
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skistudent student = new Skistudent("Hans", "Müller", 10, course);
+        Skistudent student = new Skistudent("Hans", "Müller", 10);
 
         repo.save(student);
 
         id = student.getId();
-        Skistudent studentnew = new Skistudent(id,"Hans", "Müller", 11, course);
+        Skistudent studentnew = new Skistudent(id,"Hans", "Müller", 11);
 
         repo.save(studentnew);
 
@@ -60,12 +55,9 @@ public class SkistudentRepositoryTest {
     @Test
     void deleteSkiStudent(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
         repo.skistudentList.clear();
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skistudent student = new Skistudent("Hans", "Müller", 10, course);
+        Skistudent student = new Skistudent("Hans", "Müller", 10);
 
         repo.save(student);
 
@@ -81,15 +73,13 @@ public class SkistudentRepositoryTest {
     @Test
     void findAll(){
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
         repo.skistudentList.clear();
 
         List<Skistudent> list;
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skistudent student = new Skistudent("Hans", "Müller", 10, course);
-        Skistudent student1 = new Skistudent("Peter", "Hofer", 50, course);
-        Skistudent student2 = new Skistudent("Lisa", "Müller", 25, course);
+        Skistudent student = new Skistudent("Hans", "Müller", 10);
+        Skistudent student1 = new Skistudent("Peter", "Hofer", 50);
+        Skistudent student2 = new Skistudent("Lisa", "Müller", 25);
 
         repo.save(student);
         repo.save(student1);
@@ -106,15 +96,13 @@ public class SkistudentRepositoryTest {
     void findById(){
 
         repo.skistudentList.clear();
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
 
         Integer id;
         Skistudent s;
-        Course course = new Course("Anfänger05-01-2021", 3, location);
 
-        Skistudent student = new Skistudent("Hans", "Müller", 10, course);
-        Skistudent student1 = new Skistudent("Peter", "Hofer", 50, course);
-        Skistudent student2 = new Skistudent("Lisa", "Müller", 25, course);
+        Skistudent student = new Skistudent("Hans", "Müller", 10);
+        Skistudent student1 = new Skistudent("Peter", "Hofer", 50);
+        Skistudent student2 = new Skistudent("Lisa", "Müller", 25);
 
         repo.save(student);
         repo.save(student1);

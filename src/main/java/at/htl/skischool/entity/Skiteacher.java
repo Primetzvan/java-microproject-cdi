@@ -7,14 +7,13 @@ public class Skiteacher extends Person {
 
     private int salary;
 
-
-    public Skiteacher(String firstname, String lastname, int age, Course course, int salary) {
-        super(firstname, lastname, age, course);
+    public Skiteacher(String firstname, String lastname, int age,int salary) {
+        super(firstname, lastname, age);
         this.salary = salary;
     }
 
-    protected Skiteacher(int id, String firstname, String lastname, int age, Course course, int salary) {
-        super(id, firstname, lastname, age, course);
+    protected Skiteacher(int id, String firstname, String lastname, int age,int salary) {
+        super(id, firstname, lastname, age);
         this.salary = salary;
     }
 
@@ -36,7 +35,6 @@ public class Skiteacher extends Person {
                 ", namens " + super.getFirstname() +
                 " " + super.getLastname() +
                 ", mit dem alter " + super.getAge() +
-                ", leitet den Kurs " + super.getCourse().getName() +
                 "\n";
     }
 

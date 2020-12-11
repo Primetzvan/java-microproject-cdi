@@ -2,6 +2,7 @@ package at.htl.skischool.repository;
 
 import at.htl.skischool.entity.Course;
 import at.htl.skischool.entity.Location;
+import at.htl.skischool.entity.Skiteacher;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
@@ -14,10 +15,11 @@ public class CourseRepository {
 
     public CourseRepository() {
         Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
+        Skiteacher skiteacher = new Skiteacher("Hans", "Müller", 55,  1430);
 
-        save(new Course("Anfänger05-01-2021", 3, location));
-        save(new Course("Koenner05-01-2021", 2, location));
-        save(new Course("Profis22-12-2020", 1, location));
+        save(new Course("Anfänger05-01-2021", 3, location, skiteacher));
+        save(new Course("Koenner05-01-2021", 2, location, skiteacher));
+        save(new Course("Profis22-12-2020", 1, location, skiteacher));
     }
 
     public void save(Course entity){

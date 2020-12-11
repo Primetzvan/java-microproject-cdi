@@ -39,19 +39,15 @@ public class SkistudentService {
     @Consumes(MediaType.APPLICATION_JSON)
     public String newSkistudent(JsonValue value) {
 
-        Course course = null;
-
         List<Skistudent> skistudentList = new ArrayList<>();
 
         if (value.getValueType().equals(JsonValue.ValueType.OBJECT)) {
 
-            course = repoCourse.findById(value.asJsonObject().getString("course"));
 
             Skistudent skistudent = new Skistudent(
                     value.asJsonObject().getString("firstname"),
                     value.asJsonObject().getString("lastname"),
-                    value.asJsonObject().getInt("age"),
-                    course
+                    value.asJsonObject().getInt("age")
             );
 
             repoStudent.save(skistudent);
@@ -64,17 +60,10 @@ public class SkistudentService {
         } else {
             for (int i = 0; i < value.asJsonArray().size(); i++) {
 
-                if (repoCourse.findById(value.asJsonArray().get(i).asJsonObject().getString("course")) != null){
-                course = repoCourse.findById(value.asJsonArray().get(i).asJsonObject().getString("course"));
-                }else {
-                    return "Gewünschter Kurs nicht vorhanden!";
-                }
-
                 Skistudent skistudent = new Skistudent(
                         value.asJsonArray().get(i).asJsonObject().getString("firstname"),
                         value.asJsonArray().get(i).asJsonObject().getString("lastname"),
-                        value.asJsonArray().get(i).asJsonObject().getInt("age"),
-                        course
+                        value.asJsonArray().get(i).asJsonObject().getInt("age")
                 );
 
                 skistudentList.add(skistudent);

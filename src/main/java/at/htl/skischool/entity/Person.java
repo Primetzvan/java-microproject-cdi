@@ -11,25 +11,22 @@ public abstract class Person {
     private String firstname;
     private String lastname;
     private int age;
-    private Course course;
 
 
     public Person() {
     }
 
-    public Person(String firstname, String lastname, int age, Course course) {
+    public Person(String firstname, String lastname, int age) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
-        this.course = course;
     }
 
-    protected Person(int id, String firstname, String lastname, int age, Course course) {
+    protected Person(int id, String firstname, String lastname, int age) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
-        this.course = course;
     }
 
 
@@ -64,14 +61,5 @@ public abstract class Person {
     public void setAge(int age) {
         this.age = age;
     }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
 
 }

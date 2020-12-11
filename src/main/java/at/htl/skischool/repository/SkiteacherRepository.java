@@ -15,13 +15,9 @@ public class SkiteacherRepository implements Repository<Skiteacher>{
 
     public SkiteacherRepository() {
 
-        Location location = new Location("Skizentrum Schlick 2000", 11, 22 );
-
-        Course course = new Course("Anfänger05-01-2021", 1, location);
-
-        save(new Skiteacher("Hans", "Müller", 55, course,  1430));
-        save(new Skiteacher("Peter", "Hofer", 50, course,  1000));
-        save(new Skiteacher("Lisa", "Müller", 25, course,  1000));
+        save(new Skiteacher("Hans", "Müller", 55,  1430));
+        save(new Skiteacher("Peter", "Hofer", 50,  1000));
+        save(new Skiteacher("Lisa", "Müller", 25,  1000));
     }
 
     public void save(Skiteacher entity){
@@ -39,7 +35,6 @@ public class SkiteacherRepository implements Repository<Skiteacher>{
             lehrer.setFirstname(entity.getFirstname());
             lehrer.setLastname(entity.getLastname());
             lehrer.setAge(entity.getAge());
-            lehrer.setCourse(entity.getCourse());
             lehrer.setSalary(entity.getSalary());
 
         }
@@ -107,5 +102,6 @@ public class SkiteacherRepository implements Repository<Skiteacher>{
             skiteacherList.get(i).setId(i);
         }
     }
+
 
 }

@@ -14,8 +14,8 @@ public class SkiteacherTest {
     @BeforeAll
     static void beforeAll(){
         location = new Location("Skizentrum Schlick 2000", 11, 22 );
-        course = new Course("Anfänger20-01-2022", 3, location);
-        skiteacher = new Skiteacher("Hans", "Müller", 10, course, 2000);
+        skiteacher = new Skiteacher("Hans", "Müller", 55,  1430);
+        course = new Course("Anfänger20-01-2022", 3, location, skiteacher);
     }
 
     @Test
@@ -27,11 +27,11 @@ public class SkiteacherTest {
                 ", namens " + skiteacher.getFirstname() +
                 " " + skiteacher.getLastname() +
                 ", mit dem alter " + skiteacher.getAge() +
-                ", leitet den Kurs " + skiteacher.getCourse().getName() +
                 "\n";
 
         assertThat(testString).isEqualTo(rightString);
 
     }
+
 
 }

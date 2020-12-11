@@ -38,19 +38,14 @@ public class SkiteacherService {
     @Consumes(MediaType.APPLICATION_JSON)
     public String newSkiTeacher(JsonValue value) {
 
-        Course course = null;
-
         List<Skiteacher> skiteacherList = new ArrayList<>();
 
         if (value.getValueType().equals(JsonValue.ValueType.OBJECT)) {
-
-            course = repoCourse.findById(value.asJsonObject().getString("course"));
 
             Skiteacher skiteacher = new Skiteacher(
                     value.asJsonObject().getString("firstname"),
                     value.asJsonObject().getString("lastname"),
                     value.asJsonObject().getInt("age"),
-                    course,
                     value.asJsonObject().getInt("salary")
             );
 
@@ -64,17 +59,10 @@ public class SkiteacherService {
         } else {
             for (int i = 0; i < value.asJsonArray().size(); i++) {
 
-                if (repoCourse.findById(value.asJsonArray().get(i).asJsonObject().getString("course")) != null){
-                    course = repoCourse.findById(value.asJsonArray().get(i).asJsonObject().getString("course"));
-                }else {
-                    return "Gewünschter Kurs nicht vorhanden!";
-                }
-
                 Skiteacher skiteacher = new Skiteacher(
                         value.asJsonArray().get(i).asJsonObject().getString("firstname"),
                         value.asJsonArray().get(i).asJsonObject().getString("lastname"),
                         value.asJsonArray().get(i).asJsonObject().getInt("age"),
-                        course,
                         value.asJsonArray().get(i).asJsonObject().getInt("salary")
                 );
 
@@ -141,11 +129,11 @@ public class SkiteacherService {
 
         }
         else if (value.getValueType().equals(JsonValue.ValueType.ARRAY)){
- //           for (int i = 0; i < value.asJsonArray().size(); i++) {
+            //           for (int i = 0; i < value.asJsonArray().size(); i++) {
 
-                id = value.asJsonArray().get(0).asJsonObject().getInt("id");
+            id = value.asJsonArray().get(0).asJsonObject().getInt("id");
 
-                skiteacherList.add(repoTeacher.findById(id));
+            skiteacherList.add(repoTeacher.findById(id));
 //            }
 
             return skiteacherList.toString();
@@ -155,5 +143,4 @@ public class SkiteacherService {
         }
 
     }
-
 }
