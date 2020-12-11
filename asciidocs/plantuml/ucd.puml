@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+actor "Person" as person
+
+rectangle Skischule {
+  usecase "register student" as UC1
+  usecase "create course" as UC2
+  usecase "add location" as UC3
+  usecase "register teacher" as UC4
+  usecase "delete teacher" as UC5
+  usecase "delete student" as UC6
+  usecase "delete location" as UC7
+  usecase "delete course" as UC8
+  usecase "view all students" as UC9
+  usecase "view all teachers" as UC10
+  usecase "view all courses" as UC11
+  usecase "view all locations" as UC12
+}
+
+person --> UC1
+person --> UC2
+person --> UC3
+person --> UC4
+person --> UC5
+person --> UC6
+person --> UC7
+person --> UC8
+person --> UC9
+person --> UC10
+person --> UC11
+person --> UC12
+@enduml
